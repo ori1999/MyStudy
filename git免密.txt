@@ -1,0 +1,7 @@
+1、打开 git bush 执行一下这个命令
+
+git config --global credential.helper store
+
+2、触发下（拉取），输入帐号密码
+
+3、再拉取下，就不会出现要输入帐号密码了
