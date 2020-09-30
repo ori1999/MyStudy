@@ -1,0 +1,1 @@
+sudo apt install git && cd && git clone "https://gitee.com/wszqkzqk/deepin-wine-for-ubuntu.git" && cd deepin-wine* && sudo ./install.sh && wget "https://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.office/deepin.com.qq.office_2.0.0deepin4_i386.deb" && sudo dpkg -i deepin.com.qq.office*deb
