@@ -1,0 +1,4 @@
+capitalize	首字母大写
+upper		全部大写
+lower		全部小写
+swapcase	大小写反转
