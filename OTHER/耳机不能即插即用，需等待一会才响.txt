@@ -1,0 +1,22 @@
+声音延迟是因为声卡驱动有一个省电管理，导致每一次暂停都会重启。
+
+我是惠普电脑，在惠普社区看到下面的解决方法。
+声音延迟2s的具体原因是Realtek的省电管理出现问题，为了节省电量Realtek在不工作时会自动关闭，导致每次启动Realtek时都e799bee5baa6e4b893e5b19e31333431343730需要重新加载，所以说会出现声音延迟1~2s的问题。解决思路是关闭Realtk的省电管理功能。具体解决方法是：
+
+使用windows+R键调出运行窗口，输入regedit打开注册表编辑器
+
+按照路径寻找 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e96c-e325-11ce-bfc1-08002be10318}\xxxx\PowerSettings
+
+其中'xxxx'是个四位数字，不同型号的电脑数字可能不一样，在暗影精灵4中'xxxx'即'0001'。验证方法为点击某个'xxxx'，右侧窗口的键值中有DriverDesc，若该DriverDesc的值为 'Realtk High Definition Audio'，则此'xxxx'就是我们要找的路径
+
+找到PowerSettings中的三个二进制值并将它们修改为：
+
+ConservationIdleTime = ff ff ff ff
+
+IdlePowerState = 00 00 00 00
+
+PerformanceIdleTime = ff ff ff ff
+
+这些二进制值的默认值都是 00 00 00 00，有些其他的声卡驱动可能是0a 00 00 00
+
+这样就可以关闭Realtek省电管理
